@@ -10,7 +10,5 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class App {
     public static void main( String[] args ) {
         ConfigurableApplicationContext context = SpringApplication.run(App.class,args);
-        context.getBean(BeanOne.class).sayBeanOne();
-        context.getBean(BeanTwo.class).sayBeanTwo();
     }
 }

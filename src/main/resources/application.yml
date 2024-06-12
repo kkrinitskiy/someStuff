@@ -1,16 +1,27 @@
-server:
-  port: 8085
+#server:
+#  port: 8085
+#
+#logging:
+#  level:
+##    root: debug
+#    com.spring.ex: debug
+#
+#comment:
+#  length:
+#    max: 300
+#
+#app:
+#  name: MyApp
+#  maxConnections: 10
+#  enableFeature: true
+#
 
-logging:
-  level:
-#    root: debug
-    com.spring.ex: debug
-
-comment:
-  length:
-    max: 300
-
-app:
-  name: MyApp
-  maxConnections: 10
-  enableFeature: true
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/commentdb
+    username: psql
+    password: psql
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
