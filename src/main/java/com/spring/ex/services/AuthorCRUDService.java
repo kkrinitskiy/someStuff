@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -49,11 +50,14 @@ public class AuthorCRUDService implements CRUDService<AuthorDTO>{
         author.setFirstName(authorDTO.getFirstName());
         author.setLastName(authorDTO.getLastName());
         author.setRating(authorDTO.getRating());
-//        if(authorDTO.getComments() != null) {
-            author.setComments(authorDTO.getComments().stream()
-                    .map(CommentCRUDService::mapToEntity)
-                    .toList());
-//        }
+        if(authorDTO.getComments() == null){
+            author.setComments(new ArrayList<>());
+        }else {
+            author.setComments(
+                    authorDTO.getComments().stream()
+                            .map(CommentCRUDService::mapToEntity)
+                            .toList());
+        }
         return author;
     }
 
@@ -63,9 +67,13 @@ public class AuthorCRUDService implements CRUDService<AuthorDTO>{
         authorDTO.setFirstName(author.getFirstName());
         authorDTO.setLastName(author.getLastName());
         authorDTO.setRating(author.getRating());
-        authorDTO.setComments(author.getComments().stream()
-                .map(CommentCRUDService::mapToDTO)
-                .toList());
+        if(author.getComments() == null){
+            authorDTO.setComments(new ArrayList<>());
+        }else {
+            authorDTO.setComments(author.getComments().stream()
+                    .map(CommentCRUDService::mapToDTO)
+                    .toList());
+        }
         return authorDTO;
     }
 }
