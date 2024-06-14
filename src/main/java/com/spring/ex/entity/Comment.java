@@ -23,8 +23,9 @@ public class Comment {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "author")
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id") // author_id - внешний ключ, не может быть null, тк у каждого комментария может быть автор
+    private Author author;
 
     @CreationTimestamp
     @Column(name = "creation_time")

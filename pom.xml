@@ -39,6 +39,12 @@
       <artifactId>lombok</artifactId>
       <version>RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-core</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+
   </dependencies>
 
   <build>
